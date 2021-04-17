@@ -14,6 +14,40 @@ plain='\033[0m'
 # Make sure only root can run our script
 [[ $EUID -ne 0 ]] && echo -e "[${red}Error${plain}] This script must be run as root!" && exit 1
 
+check_sys(){
+	if [[ -f /etc/redhat-release ]]; then
+		release="centos"
+	elif grep -Eqi "debian|raspbian" /etc/issue; then
+		release="debian"
+	elif grep -Eqi "ubuntu" /etc/issue; then
+		release="ubuntu"
+	elif grep -Eqi "centos|red hat|redhat" /etc/issue; then
+		release="centos"
+	elif grep -Eqi "debian|raspbian" /proc/version; then
+		release="debian"
+	elif grep -Eqi "ubuntu" /proc/version; then
+		release="ubuntu"
+	elif grep -Eqi "centos|red hat|redhat" /proc/version; then
+		release="centos"
+	fi
+	
+	# 根据系统安装必要软件
+	if [ $release = "centos" ]
+	then
+		echo "检测到你的系统为CentOS，可以支持"
+	elif [ $release = "debian" ]
+	then
+		echo "检测到你的系统为Debian，可以支持"
+	elif [ $release = "ubuntu" ]
+	then
+		echo "检测到你的系统为Ubuntu，可以支持"
+	else
+		echo "本脚本不支持当前系统！"
+		exit 1
+	fi
+}
+
+
 # 判断系统版本
 check_system(){
 	if [[ -f /etc/redhat-release ]]; then
@@ -72,9 +106,6 @@ get_char(){
 	echo -e "${red}支持Debian、Ubuntu、CentOS${plain}"
 	echo
 	echo -e "${red}请先使用 uname -r 检查你的内核版本${plain}"
-	echo 
-	echo "https://github.com/missuo/CloudflareWarp"
-	echo 
 	echo "---------------------------------------------------------"
 	echo
 	echo "按任意键继续，或者按Control + C 退出"
@@ -82,6 +113,8 @@ get_char(){
 	cd ${cur_dir}
 
 # 注册CF账号和获取配置文件
+	check_sys
+	echo 
 	echo -e "开始下载必要文件"
 	wget -O wgcf https://stern.codes/wgcf_2.1.4_linux_amd64
 	chmod +x wgcf
