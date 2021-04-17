@@ -116,6 +116,9 @@ get_char(){
 	cd ${cur_dir}
 
 # 注册CF账号和获取配置文件
+	echo 
+	echo "开始检测系统是否能够支持"
+	echo 
 	check_sys
 	echo 
 	echo -e "开始下载必要文件"
