@@ -7,7 +7,7 @@ CloudflareWarp 一键脚本
 - [x] Warp为没有IPV4的IPV6 Only的服务器增加IPV4
 - [x] Warp为没有IPV6的IPV4 Only的服务器增加IPV6
 - [x] Warp为拥有IPV4和IPV6隐藏真实的IPV4和IPV6
-- [x] Warp为无法解锁流媒体的服务器提供流媒体解锁服务
+- [x] Warp可以提供流媒体解锁服务（包括YouTube、Netflix等）
 - [x] Warp是完全免费的
 
 ## 本脚本的功能
