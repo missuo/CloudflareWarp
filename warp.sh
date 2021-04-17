@@ -169,7 +169,8 @@ get_char(){
 		echo
 		echo "开始检测本机IPV6"
 		echo
-		echo "IPV6: "curl ipv6.ip.sb
+		echo -e "IPV6:/c"
+		curl ipv6.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
@@ -207,7 +208,8 @@ get_char(){
 		echo
 		echo "开始检测本机IPV4"
 		echo
-		echo "IPV4: "curl ipv4.ip.sb
+		echo -e "IPV4:/c"
+		curl ipv4.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
@@ -244,11 +246,13 @@ get_char(){
 		echo
 		echo "开始检测本机IPV4"
 		echo
-		echo "IPV4: "curl ipv4.ip.sb
+		echo -e "IPV4:/c"
+		curl ipv4.ip.sb
 		echo
 		echo "开始检测本机IPV6"
 		echo
-		echo "IPV6: "curl ipv6.ip.sb
+		echo -e "IPV6:/c"
+		curl ipv6.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
