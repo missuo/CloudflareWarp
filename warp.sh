@@ -72,6 +72,9 @@ get_char(){
 	echo -e "${red}支持Debian、Ubuntu、CentOS${plain}"
 	echo
 	echo -e "${red}请先使用 uname -r 检查你的内核版本${plain}"
+	echo 
+	echo "https://github.com/missuo/CloudflareWarp"
+	echo 
 	echo "---------------------------------------------------------"
 	echo
 	echo "按任意键继续，或者按Control + C 退出"
