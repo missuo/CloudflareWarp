@@ -17,9 +17,7 @@ CloudflareWarp 一键脚本
 - [x] 三种模式：增加IPV4、增加IPV6、双栈
 
 ## 要求 
-支持 Ubuntu 
-支持 Debian 
-支持 CentOS 7 Kernel>=5.4 （强烈推荐）
+支持 `Ubuntu` `Debian` `CentOS7` (CentOS内核必须 >= 5.4)
 
 建议使用一下脚本升级你的内核为BBR最新版本
 ```shell
