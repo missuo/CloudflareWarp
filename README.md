@@ -2,6 +2,7 @@
 CloudflareWarp 一键脚本
 
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
+手动安装教程：[原帖](https://luotianyi.vc/5252.html)
 
 ## Warp 优点
 - [x] Warp为没有IPV4的IPV6 Only的服务器增加IPV4
