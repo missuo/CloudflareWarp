@@ -3,6 +3,10 @@ CloudflareWarp 一键脚本
 
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
 
+## 已知问题
+Debian10下部分内核下 linux-headers 无法通过 `apt-get install linux-headers-`uname -r` -y` 完成安装 
+
+
 ## 手动安装版本教程：
 [原帖](https://luotianyi.vc/5252.html)
 
