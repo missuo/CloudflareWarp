@@ -47,7 +47,8 @@ curl ipv4.ip.sb
 curl ipv6.ip.sb
 ```
 
-流媒体测试（感谢 [sjlleo](https://github.com/sjlleo/)提供的流媒体测试脚本）
+流媒体测试（感谢 [sjlleo](https://github.com/sjlleo/)提供的流媒体测试脚本） 
+
 Netflix
 ```shell
 wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.60_linux_amd64 && chmod +x nf && clear && ./nf
