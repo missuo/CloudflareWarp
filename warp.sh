@@ -133,11 +133,11 @@ get_char(){
 # 选择启动模式
 	echo "------------------------------------------"
 	echo
-	echo "1: 增加Warp IPV6"
+	echo "1: 单栈 Warp IPV6"
 	echo
-	echo "2: 增加Warp IPV4"
+	echo "2: 单栈 Warp IPV4"
 	echo
-	echo "3: 增加Warp IPV4 & IPV6"
+	echo "3: 双栈 Warp IPV4 & IPV6"
 	echo
 	echo "------------------------------------------"
 	read -p "请选择你需要启动的模式: " start_type
@@ -168,7 +168,8 @@ get_char(){
 		echo "WireGuard隧道启动完成"
 		echo
 		echo "开始检测本机IPV6"
-		curl ipv6.ip.sb
+		echo
+		echo "IPV6: "curl ipv6.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
@@ -176,6 +177,11 @@ get_char(){
 		echo
 		;;
 	2)
+		echo "你确定要继续吗？该模式会导致原IPV4建立的SSH连接断开"
+		echo
+		echo "按任意键继续，或者按Control + C 退出"
+		char=`get_char`
+		cd ${cur_dir}
 		clear
 		echo
 		echo "你选择了增加IPV4的模式"
@@ -200,7 +206,8 @@ get_char(){
 		echo "WireGuard隧道启动完成"
 		echo
 		echo "开始检测本机IPV4"
-		curl ipv4.ip.sb
+		echo
+		echo "IPV4: "curl ipv4.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
@@ -208,6 +215,11 @@ get_char(){
 		echo
 		;;
 	3)
+		echo "你确定要继续吗？该双栈模式会导致原IP建立的SSH连接断开，并且无法使用原IP重新建立SSH连接"
+		echo
+		echo "按任意键继续，或者按Control + C 退出"
+		char=`get_char`
+		cd ${cur_dir}
 		clear
 		echo
 		echo "你选择了增加IPV4和IPV6的模式"
@@ -231,10 +243,12 @@ get_char(){
 		echo "WireGuard隧道启动完成"
 		echo
 		echo "开始检测本机IPV4"
-		curl ipv4.ip.sb
+		echo
+		curl "IPV4: "curl ipv4.ip.sb
 		echo
 		echo "开始检测本机IPV6"
-		curl ipv6.ip.sb
+		echo
+		echo "IPV6: "curl ipv6.ip.sb
 		echo
 		echo "恭喜你！配置完成！"
 		echo
