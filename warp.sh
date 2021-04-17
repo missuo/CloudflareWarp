@@ -103,9 +103,9 @@ get_char(){
 	echo
 	echo -e "${green}Cloudflare Warp 一键脚本 Made by Vincent${plain}"
 	echo
-	echo -e "${red}支持Debian、Ubuntu、CentOS${plain}"
+	echo -e "${red}支持Debian9/10、Ubuntu18、CentOS7${plain}"
 	echo
-	echo -e "${red}请先使用 uname -r 检查你的内核版本${plain}"
+	echo -e "${red}CentOS7在运行前请确保内核版本>=5.4${plain}"
 	echo 
 	echo "https://github.com/missuo/CloudflareWarp"
 	echo 
