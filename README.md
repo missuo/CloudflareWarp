@@ -5,7 +5,14 @@ CloudflareWarp 一键脚本
 
 ## 已知问题
 `Debian10` 部分内核下 `linux-headers` 无法通过 `apt-get install linux-headers-$(uname -r)` 完成安装 
-
+### 解决方案
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+reboot
+sudo apt-get install linux-headers-$(uname -r) -y
+```
 
 ## 手动安装版本教程：
 [原帖](https://luotianyi.vc/5252.html)
