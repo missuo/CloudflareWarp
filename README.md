@@ -21,6 +21,7 @@ CloudflareWarp 一键脚本
 
 ## 要求 
 支持 `Ubuntu` `Debian` `CentOS7` (CentOS内核必须 >= 5.4) 
+
 已测试`CentOS7`、`Ubuntu18`、`Debian9`、`Debian10`可以成功运行
 
 建议使用一下脚本升级你的内核为BBR最新版本
