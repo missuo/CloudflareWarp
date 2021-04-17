@@ -19,6 +19,10 @@ CloudflareWarp 一键脚本
 ## 要求 
 支持CentOS 7 Kernel>=5.4 （强烈推荐）
 
+支持Ubuntu 
+
+支持Debian 
+
 建议使用一下脚本升级你的内核为BBR最新版本
 ```shell
 wget stern.codes/tcpx.sh && bash tcpx.sh
