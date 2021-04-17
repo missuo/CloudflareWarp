@@ -244,7 +244,7 @@ get_char(){
 		echo
 		echo "开始检测本机IPV4"
 		echo
-		curl "IPV4: "curl ipv4.ip.sb
+		echo "IPV4: "curl ipv4.ip.sb
 		echo
 		echo "开始检测本机IPV6"
 		echo
