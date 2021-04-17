@@ -37,5 +37,26 @@ CDN链接(包含IPV4和IPV6)
 ```shell
 wget stern.codes/warp.sh && bash warp.sh
 ```
+
+## 测试
+IPV4 & IPV6测试
+```shell
+curl ipv4.ip.sb
+```
+```shell
+curl ipv6.ip.sb
+```
+
+流媒体测试（感谢 [sjlleo](https://github.com/sjlleo/)提供的流媒体测试脚本）
+Netflix
+```shell
+wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.60_linux_amd64 && chmod +x nf && clear && ./nf
+```
+YouTube
+```shell
+wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
+```
+
+
 ## 反馈
 欢迎测试，并且在ISSUES中提出BUG，我会在第一时间修复
