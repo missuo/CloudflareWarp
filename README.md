@@ -29,7 +29,7 @@ wget stern.codes/tcpx.sh && bash tcpx.sh
 ## 使用
 Github链接（必须拥有IPV4，IPV6不支持）
 ```shell
-wget https
+wget https://raw.githubusercontent.com/missuo/CloudflareWarp/main/warp.sh && bash warp.sh
 ```
 
 CDN链接(包含IPV4和IPV6)
