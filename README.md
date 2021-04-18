@@ -31,7 +31,7 @@ sudo apt-get install linux-headers-$(uname -r) -y
 - [x] 三种模式：增加IPV4、增加IPV6、双栈
 
 ## 要求 
-支持 `Ubuntu` `Debian` `CentOS7` (CentOS内核必须 >= 5.4) 
+支持 `Ubuntu` `Debian` `CentOS7` (内核必须为 >= 5.X  4.X版本可能会导致`linux-headers`无法安装)
 
 已测试`CentOS7`、`Ubuntu18`、`Debian9`、`Debian10`可以成功运行
 
