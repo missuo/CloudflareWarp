@@ -49,7 +49,7 @@ wget https://raw.githubusercontent.com/missuo/CloudflareWarp/main/warp.sh && bas
 
 CDN链接(包含IPV4和IPV6)
 ```shell
-wget stern.codes/warp.sh && bash warp.sh
+wget -O warp.sh stern.codes/warp.sh && bash warp.sh
 ```
 
 ## 测试
