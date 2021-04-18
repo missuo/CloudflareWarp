@@ -76,7 +76,7 @@ check_sys(){
 	if [[ `echo ${kernel_version} | awk -F'.' '{print $1}'` == "5" ]]; then
 		echo "检查通过 该系统支持安装Cloudflare Warp"
 	else
-		echo "[${red}错误${plain}]抱歉 你的系统不支持安装Cloudflare Warp 请先升级内核版本到5.X后重试"
+		echo -e "[${red}错误${plain}]抱歉 你的系统不支持安装Cloudflare Warp 请先升级内核版本到5.X后重试"
 		exit 1
 	fi
 
@@ -98,7 +98,7 @@ check_sys(){
 		sudo apt-get install sudo net-tools openresolv -y
 		sudo apt-get install wireguard -y
 	else
-		echo "[${red}错误${plain}]不支持当前系统"
+		echo -e "[${red}错误${plain}]不支持当前系统"
 		exit 1
 	fi
 }
