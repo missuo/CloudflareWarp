@@ -83,20 +83,21 @@ check_sys(){
 	#根据系统类型安装WireGuard
 	if [ $release = "Centos" ]
 	then
+		yum install yum-utils epel-release -y
 		yum install kmod-wireguard wireguard-tools -y
 	elif [ $release = "Debian" ]
 	then
-		sudo apt-get update
-		sudo apt-get install sudo net-tools openresolv -y
+		apt-get update
+		apt-get install sudo net-tools openresolv -y
 		echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
 		printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
-		sudo apt-get install linux-headers-`uname -r` -y
-		sudo apt-get install wireguard-dkms wireguard-tools -y
+		apt-get install linux-headers-`uname -r` -y
+		apt-get install wireguard-dkms wireguard-tools -y
 	elif [ $release = "Ubuntu" ]
 	then
-		sudo apt-get update
-		sudo apt-get install sudo net-tools openresolv -y
-		sudo apt-get install wireguard -y
+		apt-get update
+		apt-get install sudo net-tools openresolv -y
+		apt-get install wireguard -y
 	else
 		echo -e "[${red}错误${plain}]不支持当前系统"
 		exit 1
@@ -129,7 +130,7 @@ add_ipv4(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	sudo wg-quick up wgcf
+	wg-quick up wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	IP=$(curl -s ipv4.ip.sb)
@@ -156,7 +157,7 @@ add_ipv6(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	sudo wg-quick up wgcf
+	wg-quick up wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV6"
 	IP=$(curl -s ipv6.ip.sb)
@@ -187,7 +188,7 @@ add_both(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	sudo wg-quick up wgcf
+	wg-quick up wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	echo
