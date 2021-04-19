@@ -229,7 +229,7 @@ ${green}0.${plain} 退出脚本
 	add_ipv6
 	;;
 	3)
-	add-both
+	add_both
 	;;
 	0)
 	exit 1
