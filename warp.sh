@@ -84,7 +84,8 @@ check_sys(){
 	if [ $release = "Centos" ]
 	then
 		yum install yum-utils epel-release -y
-		yum install kmod-wireguard wireguard-tools -y
+		yum install kmod-wireguard wireguard-tools iproute -y
+		yum --enablerepo=elrepo-kernel -y install kernel-ml-headers
 	elif [ $release = "Debian" ]
 	then
 		apt-get update
