@@ -83,13 +83,14 @@ check_sys(){
 	#根据系统类型安装WireGuard
 	if [ $release = "Centos" ]
 	then
+		yum -y install wget curl
 		yum install yum-utils epel-release -y
 		yum install kmod-wireguard wireguard-tools iproute -y
 		yum --enablerepo=elrepo-kernel -y install kernel-ml-headers
 	elif [ $release = "Debian" ]
 	then
 		apt-get update
-		apt-get install sudo net-tools openresolv -y
+		apt-get install sudo net-tools openresolv curl wget -y
 		echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
 		printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
 		apt-get install linux-headers-`uname -r` -y
@@ -97,7 +98,7 @@ check_sys(){
 	elif [ $release = "Ubuntu" ]
 	then
 		apt-get update
-		apt-get install sudo net-tools openresolv -y
+		apt-get install sudo net-tools openresolv curl wget -y
 		apt-get install wireguard -y
 	else
 		echo -e "[${red}错误${plain}]不支持当前系统"
@@ -110,7 +111,7 @@ reg_account(){
 	echo "开始注册Cloudflare Warp账号"
 	wget -O wgcf https://stern.codes/wgcf_2.1.4_linux_amd64
 	chmod +x wgcf
-	./wgcf register
+	echo | ./wgcf register
 	./wgcf generate
 	echo "已完成注册 即将执行下一步操作"
 }
@@ -211,6 +212,49 @@ add_both(){
 	echo
 }
 
+add_lossless_both(){
+	reg_account
+	echo -e "
+	你确定要继续吗？
+	该模式仅支持Ubuntu 20.04" && echo
+	echo "按任意键继续，或者按Control + C 退出"
+	char=`get_char`
+	clear
+	sed -i '5 s/^/PostUp = ip -4 rule add from eu4 table main\n/' wgcf-profile.conf
+	sed -i '6 s/^/PostDown = ip -4 rule delete from eu4 table main\n/' wgcf-profile.conf
+	read -p "粘贴（VPS专用IP地址）:" eu4
+	sed -i "s#eu4#$eu4#g" wgcf-profile.conf
+	sed -i '7 s/^/PostUp = ip -6 rule add from eu6 table main\n/' wgcf-profile.conf
+	sed -i '8 s/^/PostDown = ip -6 rule delete from eu6 table main\n/' wgcf-profile.conf
+	read -p "粘贴（VPS本地IPV6地址）:" eu6
+	sed -i "s#eu6#$eu6#g" wgcf-profile.conf
+	sed -i 's/1.1.1.1/9.9.9.9,8.8.8.8,2001:4860:4860::8888,2001:4860:4860::8844/g' wgcf-profile.conf
+	echo "开始加载WireGuard内核模块"
+	modprobe wireguard
+	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
+	echo "开启启动WireGuard隧道"
+	wg-quick up wgcf
+	echo "WireGuard隧道启动完成"
+	echo "开始检测本机IPV4"
+	echo
+	IP=$(curl -s ipv4.ip.sb)
+	if [ ! -n $IP ]; then
+		echo "IPV4检测失败"
+	else
+		echo "本机IPV4: $IP"
+	fi
+	echo "开始检测本机IPV6"
+	IP=$(curl -s ipv6.ip.sb)
+	if [ ! -n $IP ]; then
+		echo "IPV6检测失败"
+	else
+		echo "本机IPV6: $IP"
+	fi
+	echo
+	echo "恭喜你！配置完成！感谢使用! Have a nice day :)"
+	echo
+}
+
 start_menu(){
 	clear
 	echo && echo -e "Cloudflare Warp 一键安装脚本 Made by missuo
@@ -219,6 +263,7 @@ start_menu(){
 ${green}1.${plain} 仅增加IPV4 [推荐]
 ${green}2.${plain} 仅增加IPV6 [推荐]
 ${green}3.${plain} 同时增加IPV4 & IPV6[慎用]
+${green}4.${plain} 同时增加IPV4 & IPV6[无损模式]
 ${green}0.${plain} 退出脚本
 ————————————————————————————————"
 	read -p " 请输入数字: " num
@@ -232,12 +277,15 @@ ${green}0.${plain} 退出脚本
 	3)
 	add_both
 	;;
+	4)
+	add_lossless_both
+	;;
 	0)
 	exit 1
 	;;
 	*)
 	clear
-	echo -e "[${red}错误${plain}]:请输入正确数字[0-3]"
+	echo -e "[${red}错误${plain}]:请输入正确数字[0-4]"
 	sleep 5s
 	start_menu
 	;;
