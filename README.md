@@ -3,6 +3,12 @@ CloudflareWarp 一键脚本
 
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
 
+## 更新(2021年5月21日)
+- [x] 改进了在注册Warp账号的时候需要手动回车选择`Yes`的问题
+- [x] 修复了可能没有`wget`、`curl`导致安装失败的问题（感谢[2guan](https://github.com/2guan)指出）
+- [x] 增加了`IPv4&IPv6的无损模式`，仅出站走Warp（感谢[lns103](https://github.com/lns103)提出的建议）
+
+
 ## 已知问题
 `Debian10` 部分内核下 `linux-headers` 无法通过 `apt-get install linux-headers-$(uname -r)` 完成安装 
 ### 解决方案
