@@ -43,7 +43,7 @@ sudo apt-get install linux-headers-$(uname -r) -y
 
 建议使用一下脚本升级你的内核为BBR最新版本
 ```shell
-wget stern.codes/tcpx.sh && bash tcpx.sh
+wget uone.one/tcpx.sh && bash tcpx.sh
 ```
 选择1安装原版BBR，安装完之后`reboot`，开机之后执行`bash tcpx.sh`，输入11启动BBR加速
 
@@ -55,7 +55,7 @@ wget -O warp.sh https://raw.githubusercontent.com/missuo/CloudflareWarp/main/war
 
 CDN链接(包含IPV4和IPV6)
 ```shell
-wget -O warp.sh stern.codes/warp.sh && bash warp.sh
+wget -O warp.sh uone.one/warp.sh && bash warp.sh
 ```
 
 ## 测试
