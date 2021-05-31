@@ -55,7 +55,7 @@ wget -O warp.sh https://raw.githubusercontent.com/missuo/CloudflareWarp/main/war
 
 CDN链接(包含IPV4和IPV6)
 ```shell
-wget -O warp.sh uone.one/warp.sh && bash warp.sh
+wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bash warp.sh
 ```
 
 ## 测试
