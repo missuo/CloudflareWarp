@@ -57,7 +57,7 @@ wget uone.one/tcpx.sh && bash tcpx.sh
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bash warp.sh
 ```
 ### Linux ARM_64 (测试阶段)
-```
+```shell
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm64.sh && bash warp-arm64.sh
 ```
 
