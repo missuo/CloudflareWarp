@@ -53,18 +53,12 @@ wget uone.one/tcpx.sh && bash tcpx.sh
 
 ## 使用
 ### Linux X86_64
-Github链接（必须拥有IPV4，IPV6不支持）
-```shell
-wget -O warp.sh https://raw.githubusercontent.com/missuo/CloudflareWarp/main/warp.sh && bash warp.sh
-```
-
-CDN链接(包含IPV4和IPV6)
 ```shell
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bash warp.sh
 ```
 ### Linux ARM_64 (测试阶段)
 ```
-wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm.sh && bash warp-arm.sh
+wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm64.sh && bash warp-arm64.sh
 ```
 
 ## 测试
