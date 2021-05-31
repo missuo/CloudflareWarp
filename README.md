@@ -3,7 +3,11 @@ CloudflareWarp 一键脚本
 
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
 
-## 更新(2021年5月21日)
+## 更新
+### 2021年5月31日
+- [x] 增加了ARM 64的支持
+
+### 2021年5月21日
 - [x] 改进了在注册Warp账号的时候需要手动回车选择`Yes`的问题
 - [x] 修复了没有`wget`、`curl`可能导致安装失败的问题（感谢[2guan](https://github.com/2guan)指出）
 - [x] 增加了`IPv4&IPv6的无损模式`，仅出站走Warp「仅支持`Ubuntu 20.04`」（感谢[lns103](https://github.com/lns103)提出的建议）
@@ -48,6 +52,7 @@ wget uone.one/tcpx.sh && bash tcpx.sh
 选择1安装原版BBR，安装完之后`reboot`，开机之后执行`bash tcpx.sh`，输入11启动BBR加速
 
 ## 使用
+### Linux X86_64
 Github链接（必须拥有IPV4，IPV6不支持）
 ```shell
 wget -O warp.sh https://raw.githubusercontent.com/missuo/CloudflareWarp/main/warp.sh && bash warp.sh
@@ -56,6 +61,10 @@ wget -O warp.sh https://raw.githubusercontent.com/missuo/CloudflareWarp/main/war
 CDN链接(包含IPV4和IPV6)
 ```shell
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bash warp.sh
+```
+### Linux ARM_64 (测试阶段)
+```
+wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm.sh && bash warp-arm.sh
 ```
 
 ## 测试
