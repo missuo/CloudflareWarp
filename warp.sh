@@ -109,7 +109,7 @@ check_sys
 
 reg_account(){
 	echo "开始注册Cloudflare Warp账号"
-	wget -O wgcf https://stern.codes/wgcf_2.1.4_linux_amd64
+	wget -O wgcf https://uone.one/wgcf_2.1.4_linux_amd64
 	chmod +x wgcf
 	echo | ./wgcf register
 	./wgcf generate
