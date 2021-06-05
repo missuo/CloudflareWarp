@@ -25,7 +25,7 @@ sudo apt-get install linux-headers-$(uname -r) -y
 ```
 
 ## 手动安装版本教程：
-[原帖](https://luotianyi.vc/5252.html)
+原帖作者与脚本无关 原帖请看[这里](https://luotianyi.vc/5252.html) 
 
 ## Warp 优点
 - [x] Warp为没有IPV4的IPV6 Only的服务器增加IPV4
