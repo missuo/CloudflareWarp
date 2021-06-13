@@ -19,8 +19,11 @@ CloudflareWarp 一键脚本
 
 ### 感谢Bug发现的小伙伴
 感谢 [2guan](https://github.com/2guan) 指出 可能安装失败的问题 
+
 感谢 [lns103](https://github.com/lns103) 建议 无损双栈方案 
+
 感谢 [tianyunb666](https://github.com/tianyunb666) 和 [ChellyL](https://github.com/ChellyL) 指出 `Debian 10` 安装失败的问题 
+
 「如有疏漏，请谅解」
 
 ## 已知问题
