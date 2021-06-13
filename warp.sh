@@ -6,10 +6,11 @@ export PATH
 #	System Required: CentOS 6/7/8,Debian 8/9/10,Ubuntu 16/18/19
 #	Kernel Required: 5.X
 #	Description: Cloudflare One-Step Script
-#	Version: 2.0
+#	Version: 4.0
 #	Author: Vincent Young
 # 	Telegram: https://t.me/missuo
 #	Github: https://github.com/missuo/CloudflareWarp
+#	Latest Update: June 13, 2021
 #=================================================================
 
 #获取键盘输入
@@ -111,9 +112,10 @@ check_sys
 reg_account(){
 	echo "开始注册Cloudflare Warp账号"
 	wget -O wgcf https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/CDNRelease/wgcf_2.2.3_linux_amd64
-	chmod +x wgcf
-	echo | ./wgcf register
-	./wgcf generate
+	mv wgcf /usr/local/bin/
+	chmod +x /usr/local/bin/wgcf
+	echo | wgcf register
+	wgcf generate
 	echo "已完成注册 即将执行下一步操作"
 }
 
@@ -133,7 +135,8 @@ add_ipv4(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	wg-quick up wgcf
+	systemctl enable wg-quick@wgcf
+	systemctl start wg-quick@wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	IP=$(curl -s ipv4.ip.sb)
@@ -145,7 +148,7 @@ add_ipv4(){
 		echo "本机IPV4: $IP"
 	fi
 	echo
-	echo "恭喜你！配置完成！感谢使用! Have a nice day :)"
+	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
 }
 
@@ -160,7 +163,8 @@ add_ipv6(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	wg-quick up wgcf
+	systemctl enable wg-quick@wgcf
+	systemctl start wg-quick@wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV6"
 	IP=$(curl -s ipv6.ip.sb)
@@ -172,7 +176,7 @@ add_ipv6(){
 		echo "本机IPV6: $IP"
 	fi
 	echo
-	echo "恭喜你！配置完成！感谢使用! Have a nice day :)"
+	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
 }
 
@@ -191,7 +195,8 @@ add_both(){
 	modprobe wireguard
 	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
 	echo "开启启动WireGuard隧道"
-	wg-quick up wgcf
+	systemctl enable wg-quick@wgcf
+	systemctl start wg-quick@wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	echo
@@ -209,51 +214,18 @@ add_both(){
 		echo "本机IPV6: $IP"
 	fi
 	echo
-	echo "恭喜你！配置完成！感谢使用! Have a nice day :)"
+	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
 }
 
-add_lossless_both(){
-	reg_account
-	echo -e "
-	你确定要继续吗？
-	该模式仅支持Ubuntu 20.04" && echo
-	echo "按任意键继续，或者按Control + C 退出"
-	char=`get_char`
-	clear
-	sed -i '5 s/^/PostUp = ip -4 rule add from eu4 table main\n/' wgcf-profile.conf
-	sed -i '6 s/^/PostDown = ip -4 rule delete from eu4 table main\n/' wgcf-profile.conf
-	read -p "粘贴（VPS专用IP地址）:" eu4
-	sed -i "s#eu4#$eu4#g" wgcf-profile.conf
-	sed -i '7 s/^/PostUp = ip -6 rule add from eu6 table main\n/' wgcf-profile.conf
-	sed -i '8 s/^/PostDown = ip -6 rule delete from eu6 table main\n/' wgcf-profile.conf
-	read -p "粘贴（VPS本地IPV6地址）:" eu6
-	sed -i "s#eu6#$eu6#g" wgcf-profile.conf
-	sed -i 's/1.1.1.1/9.9.9.9,8.8.8.8,2001:4860:4860::8888,2001:4860:4860::8844/g' wgcf-profile.conf
-	echo "开始加载WireGuard内核模块"
-	modprobe wireguard
-	cp wgcf-profile.conf /etc/wireguard/wgcf.conf
-	echo "开启启动WireGuard隧道"
-	wg-quick up wgcf
-	echo "WireGuard隧道启动完成"
-	echo "开始检测本机IPV4"
-	echo
-	IP=$(curl -s ipv4.ip.sb)
-	if [ ! -n $IP ]; then
-		echo "IPV4检测失败"
-	else
-		echo "本机IPV4: $IP"
-	fi
-	echo "开始检测本机IPV6"
-	IP=$(curl -s ipv6.ip.sb)
-	if [ ! -n $IP ]; then
-		echo "IPV6检测失败"
-	else
-		echo "本机IPV6: $IP"
-	fi
-	echo
-	echo "恭喜你！配置完成！感谢使用! Have a nice day :)"
-	echo
+exit_warp(){
+	systemctl stop wg-quick@wgcf
+	systemctl disable wg-quick@wgcf
+}
+
+start_warp(){
+	systemctl start wg-quick@wgcf
+	systemctl enable wg-quick@wgcf
 }
 
 start_menu(){
@@ -264,7 +236,8 @@ start_menu(){
 ${green}1.${plain} 仅增加IPV4 [推荐]
 ${green}2.${plain} 仅增加IPV6 [推荐]
 ${green}3.${plain} 同时增加IPV4 & IPV6[慎用]
-${green}4.${plain} 同时增加IPV4 & IPV6[无损模式]
+${green}4.${plain} 永久关闭
+${green}5.${plain} 重新开启
 ${green}0.${plain} 退出脚本
 ————————————————————————————————"
 	read -p " 请输入数字: " num
@@ -279,7 +252,10 @@ ${green}0.${plain} 退出脚本
 	add_both
 	;;
 	4)
-	add_lossless_both
+	exit_warp
+	;;
+	5)
+	start_warp
 	;;
 	0)
 	exit 1
@@ -293,6 +269,3 @@ ${green}0.${plain} 退出脚本
 esac
 }
 start_menu
-
-
-
