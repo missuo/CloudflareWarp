@@ -228,7 +228,7 @@ start_warp(){
 	systemctl enable wg-quick@wgcf
 }
 netflix_test(){
-	bash <(curl -sSL "https://cdn.jsdelivr.net/gh/missuo/SimpleNetflix/nf.sh")
+	bash <(curl -sSL "https://raw.githubusercontent.com/missuo/SimpleNetflix/main/nf.sh")
 }
 
 start_menu(){
