@@ -94,6 +94,7 @@ check_sys(){
 		echo "deb http://deb.debian.org/debian/ unstable main" > /etc/apt/sources.list.d/unstable-wireguard.list
 		printf 'Package: *\nPin: release a=unstable\nPin-Priority: 150\n' > /etc/apt/preferences.d/limit-unstable
 		apt-get install linux-headers-`uname -r` -y
+		apt-get update
 		apt-get install wireguard-dkms wireguard-tools -y
 	elif [ $release = "Ubuntu" ]
 	then
