@@ -7,16 +7,21 @@ CloudflareWarp 一键脚本
 ### 2021年6月13日
 - [x] 加入了开机自启
 - [x] 彻底修复了 `Debian 10` 下一次安装可能不成功的问题
-- [x] 移除了双栈无损模式
+- [x] 移除了双栈无损模式 
 
 ### 2021年5月31日
 - [x] 增加了ARM 64的支持
 
 ### 2021年5月21日
 - [x] 改进了在注册Warp账号的时候需要手动回车选择`Yes`的问题
-- [x] 修复了没有`wget`、`curl`可能导致安装失败的问题（感谢[2guan](https://github.com/2guan)指出）
+- [x] 修复了没有`wget`、`curl`可能导致安装失败的问问题
 - [x] 增加了`IPv4&IPv6的无损模式`，仅出站走Warp「仅支持`Ubuntu 20.04`」（感谢[lns103](https://github.com/lns103)提出的建议）
 
+### 感谢Bug发现的小伙伴
+感谢 [2guan](https://github.com/2guan) 指出 可能安装失败的问题
+感谢 [lns103](https://github.com/lns103) 建议 无损双栈方案
+感谢 [tianyunb666](https://github.com/tianyunb666) 和 [ChellyL](https://github.com/ChellyL) 指出 `Debian 10` 安装失败的问题
+「如有疏漏，请谅解」
 
 ## 已知问题
 `Debian10` 部分内核下 `linux-headers` 无法通过 `apt-get install linux-headers-$(uname -r)` 完成安装 
@@ -87,6 +92,8 @@ YouTube
 wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
 ```
 
+## 关于开源
+本脚本的所有代码可以随意拿去使用，但是希望注明来源。之前本脚本的 `Debian 10` 一次绝对安装不成功。希望之前参考了本脚本的开发者看到后能及时修改，以免影响使用。
 
 ## 反馈
 欢迎测试，并且在ISSUES中提出BUG，我会在第一时间修复
