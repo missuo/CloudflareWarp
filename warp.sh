@@ -227,6 +227,9 @@ start_warp(){
 	systemctl start wg-quick@wgcf
 	systemctl enable wg-quick@wgcf
 }
+netflix_test(){
+	bash <(curl -sSL "https://cdn.jsdelivr.net/gh/missuo/SimpleNetflix/nf.sh")
+}
 
 start_menu(){
 	clear
@@ -256,6 +259,9 @@ ${green}0.${plain} 退出脚本
 	;;
 	5)
 	start_warp
+	;;
+	6)
+	netflix_test
 	;;
 	0)
 	exit 1
