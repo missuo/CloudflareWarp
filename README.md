@@ -4,6 +4,11 @@ CloudflareWarp 一键脚本
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
 
 ## 更新
+### 2021年6月13日
+- [x] 加入了开机自启
+- [x] 彻底修复了 `Debian 10` 下一次安装可能不成功的问题
+- [x] 移除了双栈无损模式
+
 ### 2021年5月31日
 - [x] 增加了ARM 64的支持
 
@@ -24,8 +29,9 @@ reboot
 sudo apt-get install linux-headers-$(uname -r) -y
 ```
 
-## 手动安装版本教程：
-原帖作者与脚本无关 原帖请看[这里](https://luotianyi.vc/5252.html) 
+## 参考文章：
+[Luminous大佬](https://luotianyi.vc/5252.html) 
+本脚本与 `Luminous` 无关
 
 ## Warp 优点
 - [x] Warp为没有IPV4的IPV6 Only的服务器增加IPV4
@@ -56,7 +62,7 @@ wget uone.one/tcpx.sh && bash tcpx.sh
 ```shell
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bash warp.sh
 ```
-### Linux ARM_64 (测试阶段)
+### Linux ARM_64 (90%失败)
 ```shell
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm64.sh && bash warp.sh
 ```
