@@ -241,6 +241,7 @@ ${green}2.${plain} 仅增加IPV6 [推荐]
 ${green}3.${plain} 同时增加IPV4 & IPV6[慎用]
 ${green}4.${plain} 永久关闭
 ${green}5.${plain} 重新开启
+${green}6.${plain} 流媒体测试 [Netflix & YouTube]
 ${green}0.${plain} 退出脚本
 ————————————————————————————————"
 	read -p " 请输入数字: " num
