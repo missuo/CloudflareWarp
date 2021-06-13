@@ -3,7 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
 #================================================================
-#	System Required: CentOS 6/7/8,Debian 8/9/10,Ubuntu 16/18/19
+#	System Required: CentOS 6/7/8,Debian 8/9/10,Ubuntu 16/18/20
 #	Kernel Required: 5.X
 #	Description: Cloudflare One-Step Script
 #	Version: 4.0
