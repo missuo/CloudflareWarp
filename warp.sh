@@ -150,6 +150,7 @@ add_ipv4(){
 	echo
 	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
+	rm wgcf* -f
 }
 
 add_ipv6(){
@@ -178,6 +179,7 @@ add_ipv6(){
 	echo
 	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
+	rm wgcf* -f
 }
 
 add_both(){
@@ -216,6 +218,7 @@ add_both(){
 	echo
 	echo "恭喜你！配置完成！已开启开机自启！感谢使用! Have a nice day :)"
 	echo
+	rm wgcf* -f
 }
 
 exit_warp(){
