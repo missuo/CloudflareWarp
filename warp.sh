@@ -6,11 +6,11 @@ export PATH
 #	System Required: CentOS 6/7/8,Debian 8/9/10,Ubuntu 16/18/20
 #	Kernel Required: 5.X
 #	Description: Cloudflare One-Step Script
-#	Version: 4.0
+#	Version: 4.1
 #	Author: Vincent Young
 # 	Telegram: https://t.me/missuo
 #	Github: https://github.com/missuo/CloudflareWarp
-#	Latest Update: June 13, 2021
+#	Latest Update: July 18, 2021
 #=================================================================
 
 #获取键盘输入
