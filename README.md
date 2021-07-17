@@ -4,6 +4,15 @@ CloudflareWarp 一键脚本
 ![Warp](https://cdn.luotianyi.vc/wp-content/uploads/2021-02-04_21-05-50.jpg)
 
 ## 更新
+### 2021年7月18日
+- [x] 修复了`IP`可能检测错误的问题
+
+#### Always Free IP Check API:
+```shell
+curl -4 ip.nisekoo.com
+curl -6 ip.nisekoo.com
+```
+
 ### 2021年6月13日
 - [x] 加入了开机自启
 - [x] 彻底修复了 `Debian 10` 第一次安装可能不成功的问题
@@ -78,14 +87,6 @@ wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm64.sh 
 ```
 
 ## 测试
-IPV4 & IPV6测试
-```shell
-curl ipv4.ip.sb
-```
-```shell
-curl ipv6.ip.sb
-```
-
 流媒体测试（感谢  [Leo](https://github.com/sjlleo/) 提供的流媒体测试脚本） 
 
 Netflix
