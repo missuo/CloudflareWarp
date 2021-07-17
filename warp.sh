@@ -139,7 +139,7 @@ add_ipv4(){
 	systemctl start wg-quick@wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
-	IP=$(curl -s ipv4.ip.sb)
+	IP=$(curl -4 ip.nisekoo.com)
 	if [ ! -n $IP ]; then
 		echo "IPV4检测失败"
 	else
@@ -168,7 +168,7 @@ add_ipv6(){
 	systemctl start wg-quick@wgcf
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV6"
-	IP=$(curl -s ipv6.ip.sb)
+	IP=$(curl -6 ip.nisekoo.com)
 	if [ ! -n $IP ]; then
 		echo "IPV6检测失败"
 	else
@@ -202,14 +202,14 @@ add_both(){
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	echo
-	IP=$(curl -s ipv4.ip.sb)
+	IP=$(curl -4 ip.nisekoo.com)
 	if [ ! -n $IP ]; then
 		echo "IPV4检测失败"
 	else
 		echo "本机IPV4: $IP"
 	fi
 	echo "开始检测本机IPV6"
-	IP=$(curl -s ipv6.ip.sb)
+	IP=$(curl -6 ip.nisekoo.com)
 	if [ ! -n $IP ]; then
 		echo "IPV6检测失败"
 	else
