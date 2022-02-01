@@ -202,14 +202,14 @@ add_both(){
 	echo "WireGuard隧道启动完成"
 	echo "开始检测本机IPV4"
 	echo
-	IP=$(curl -4 ip.nisekoo.com)
+	IP=$(curl $useNIC -4 -s --max-time 10 api64.ipify.org)
 	if [ ! -n $IP ]; then
 		echo "IPV4检测失败"
 	else
 		echo "本机IPV4: $IP"
 	fi
 	echo "开始检测本机IPV6"
-	IP=$(curl -6 ip.nisekoo.com)
+	IP=$(curl $useNIC -6 -s --max-time 20 api64.ipify.org)
 	if [ ! -n $IP ]; then
 		echo "IPV6检测失败"
 	else
