@@ -86,18 +86,6 @@ wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp.sh && bas
 wget -O warp.sh https://cdn.jsdelivr.net/gh/missuo/CloudflareWarp/warp-arm64.sh && bash warp.sh
 ```
 
-## 测试
-流媒体测试（感谢  [Leo](https://github.com/sjlleo/) 提供的流媒体测试脚本） 
-
-Netflix
-```shell
-wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.60_linux_amd64 && chmod +x nf && clear && ./nf
-```
-YouTube
-```shell
-wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
-```
-
 ## 关于开源
 本脚本的所有代码可以随意拿去使用，但是希望注明来源。之前本脚本的 `Debian 10` 一次绝对安装不成功。希望之前参考了本脚本的开发者看到后能及时修改，以免影响使用。
 
